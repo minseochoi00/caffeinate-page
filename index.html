@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caffeniate</title>
+  <!-- Current Version: v1.0 (PROD) -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts: Roboto Mono & Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Coffee favicon from icons8 -->
+  <link rel="icon" href="https://img.icons8.com/color/48/000000/coffee-to-go.png" type="image/png">
+</head>
+<body>
+  <!-- Vue mounts on this container.
+       The :class binding adds the 'active' class when the wake lock is active. -->
+  <div id="app" class="container" :class="{ active: isActive }">
+    <h1>
+      <span class="material-icons">local_cafe</span>
+      Caffeniate
+    </h1>
+    <!-- Status message is shown in its own, well‑styled element -->
+    <div class="status-message" v-html="statusMessage"></div>
+    <p class="vpn-notice">Works with or without VPN.</p>
+    <button class="btn" @click="toggleWakeLock">
+      {{ isActive ? 'Deactivate' : 'Activate' }} Wake Lock
+    </button>
+  </div>
+  
+  <!-- External scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js" crossorigin="anonymous"></script>
+  <!-- sleep.js is loaded here but does nothing until sleepManager.enable() is called -->
+  <script src="sleep.js"></script>
+  <!-- Main script -->
+  <script src="script.js"></script>
+</body>
+</html>
